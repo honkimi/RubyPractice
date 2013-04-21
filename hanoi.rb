@@ -60,7 +60,6 @@ class Hanoi
   end
 
   def calcHanoi(nNum, nHanoi)
-    @movedCircleNo = 0
     moveAt(nNum, nHanoi, @polls['S'], @polls['G'], @polls['B'])
   end
   
