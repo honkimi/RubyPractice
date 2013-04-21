@@ -60,11 +60,11 @@ class Hanoi
   end
 
   def calcHanoi(nNum, nHanoi)
-    moveAt(nNum, nHanoi, @polls['S'], @polls['G'], @polls['B'])
+    getCircleCondition(nNum, nHanoi, @polls['S'], @polls['G'], @polls['B'])
   end
   
   #nNum: n回目の移動, nNum: 円盤数,  start: 移動元, goal: 移動先, buffer:移動のためのバッファ
-  def moveAt(nNum,nCircle , start, goal, buffer)
+  def getCircleCondition(nNum, nCircle, start, goal, buffer)
     # 一番下のを移動する回数にあたった時
     if nNum == 0
         moveDump(nCircle + 1, buffer, goal) 
@@ -86,7 +86,7 @@ class Hanoi
     end
     #moveNum個の円盤の移動が完了してから、nNum回移動したものが次に求めるべきもの
     nNum = nNum - (2**movedNum- 1)
-    moveAt(nNum-1, movedNum, buffer, goal, start)
+    getCircleCondition(nNum-1, movedNum, buffer, goal, start)
   end
 
   def moveDump(nHanoi, from, to)
