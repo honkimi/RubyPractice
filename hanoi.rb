@@ -24,7 +24,9 @@ end
 class Hanoi
   attr_accessor :polls
   N = 3
+  
   def initialize
+    @no = 0
     @polls = {
       'S' => Poll.new('S'),
       'G' => Poll.new('G'),
@@ -40,6 +42,8 @@ class Hanoi
   end
 
   def dump
+    puts "No: #{ @no }"
+    @no += 1
     @polls.each do | key, value |
       puts(key + " : " + value.to_s)
     end
@@ -47,7 +51,7 @@ class Hanoi
   end
 
   def dumpHanoi
-    hanoi(3, @polls['S'], @polls['G'], @polls['B'])
+    hanoi(N, @polls['S'], @polls['G'], @polls['B'])
     dump
   end
   
@@ -65,6 +69,9 @@ class Hanoi
   
   #nNum: n回目の移動, nNum: 円盤数,  start: 移動元, goal: 移動先, buffer:移動のためのバッファ
   def getCircleCondition(nNum, nCircle, start, goal, buffer)
+    puts "nNum: #{nNum.to_s}"
+    puts "nCircle: #{nCircle.to_s}"
+    puts "start: #{start.name}, goal: #{goal.name}, buffer: #{buffer.name}"
     # 一番下のを移動する回数にあたった時
     if nNum == 0
         moveDump(nCircle + 1, buffer, goal) 
