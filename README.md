@@ -2,12 +2,17 @@ HanoiRB
 =======
 
 ハノイの塔の計算及びn回目の円盤移動計算.
+----------------------------------------
 
-dump_hanoi.rb
+    dump_hanoi.rb num
 3つの円盤の時の流れをダンプ
++ `num` :
+    円盤の個数。最大10.
 
-calc_hanoi.rb
-第一引数に移動する回数 nNum
-第二引数に円盤の数 nCircle
-nCircle個の円盤でnNum回移動した時に, 何番目の円盤がどこからどこへ移動するのかを計算
+    calc_hanoi.rb trans_times, circle_num
+circle_num個の円盤でtrans_times回目は何個目の円盤がどこからどこへ移動するタイミングかを計算
++  `trans_times`
+  移動する回数
++  `nCircle`
+  円盤の個数
 
