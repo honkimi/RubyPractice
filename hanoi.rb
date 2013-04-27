@@ -64,7 +64,7 @@ class Hanoi
   end
 
   def calcHanoi(trans_times, circle_num)
-    moved_num = get_available_move_num(trans_times)
+    moved_num = get_available_move_comp_num(trans_times)
     if moved_num >= circle_num
       puts "You cannot move " + circle_num.to_s + " circles in " + trans_times.to_s + " times.\n" + "Minimum requirement number is " + (moved_num+1).to_s + "."
       return
@@ -73,8 +73,7 @@ class Hanoi
   end
 
   def calc(trans_times, circle_num , start, goal, buffer)
-    # 移動できる円盤の個数を計算
-    moved_num = get_available_move_num(trans_times)
+    moved_num = get_available_move_comp_num(trans_times)
     # moveNum個の円盤の移動が完了してからtrans_times回移動したものが次に求めるべきもの
     # n個の円盤の移動を完了させるには2**n - 1 回必要
     trans_times = trans_times - (2**moved_num- 1)
@@ -90,11 +89,10 @@ class Hanoi
 
   # 与えられたtrans_timesの内、移動が完了できるものの回数を取得。
   # ex) 1000の場合
-  # 2**n - 1 < 1000       < n**(n+1) - 1
-  # 2**n     < 1001       < 2**(n+1)
-  # n        < log2(1000) < n + 1
+  # 2**n   < 1000       < 2**(n+1)
+  # n      < log2(1000) < n + 1
   # log2(1000) = log(n) / log(2)
-  def get_available_move_num(trans_times)
+  def get_available_move_comp_num(trans_times)
     return (Math.log(trans_times) / Math.log(2)).to_i
   end
   
